@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@drawable/bg_custom_dialog"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/bg_home_note"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:text="Message"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        />
+
+    <TextView
+        android:id="@+id/dialogMessage"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:text="lorem ipsum dolor"
+        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+    />
+
+    <Button
+        android:id="@+id/btnDialog"
+        android:text="Close"
+        android:layout_gravity="right"
+        android:textColor="@color/teal_700"
+        android:backgroundTint="@color/teal_200"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

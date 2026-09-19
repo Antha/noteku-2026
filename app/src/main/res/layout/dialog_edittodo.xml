@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@color/purple_200"
+    tools:context=".ui.MainActivity">
+
+    <!-- Spinner -->
+    <Spinner
+        android:id="@+id/spn_color_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/spinner_background"/>
+
+    <!-- Task input -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_dialog_edit_item_todo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type your task"
+            android:textColor="@color/black"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Action buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/btn_batal_dialog_edit_item_todos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:backgroundTint="@color/teal_200"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            />
+
+        <Button
+            android:id="@+id/btn_hapus_dialog_edit_item_todos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/purple_500"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            />
+
+        <Button
+            android:id="@+id/btn_update_dialog_edit_item_todos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/teal_700"
+            android:textColor="@color/white"
+            android:textSize="12sp"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#E6CCFF</color>   <!-- Light pastel purple -->
+    <color name="purple_500">#D1B3FF</color>   <!-- Elegant pastel purple -->
+    <color name="purple_700">#B399FF</color>   <!-- Deeper pastel purple -->
+    <color name="teal_200">#B2F0E9</color>     <!-- Soft pastel teal -->
+    <color name="teal_700">#80CBC4</color>     <!-- Elegant pastel teal -->
+    <color name="black">#4D4D4D</color>        <!-- Soft dark gray (instead of pure black) -->
+    <color name="white">#FAFAFA</color>        <!-- Warm pastel white -->
+    <color name="gray_light">#E0E0E0</color>
+    <color name="gray_super_light">#CACACA</color>
+</resources>

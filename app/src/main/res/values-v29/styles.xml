@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomTimePickerStyle" parent="android:Widget.Material.TimePicker">
+        <item name="android:textColorPrimary">#765BC7</item>
+        <item name="android:textColorSecondary">#D0C1FF</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:selectionDividerHeight">20dp</item>
+        <item name="android:colorControlNormal">@android:color/transparent</item>
+    </style>
+    <style name="CustomDatePickerStyle" >
+        <item name="android:textColorPrimary">#765BC7</item>
+        <item name="android:textColorSecondary">#D0C1FF</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:selectionDividerHeight">20dp</item>
+        <item name="android:colorControlNormal">@android:color/transparent</item>
+    </style>
+</resources>

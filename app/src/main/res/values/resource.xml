@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="planets_array">
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Pink</item>
+        <item>Orange</item>
+        <item>Chocolate</item>
+    </string-array>
+
+    <string-array name="color_array">
+        <item>#FFB3B3</item>   <!-- Pastel Red -->
+        <item>#C8E6C9</item>   <!-- Pastel Green -->
+        <item>#9FA8DA</item>   <!-- Pastel Blue -->
+        <item>#FFD1DC</item>   <!-- Pastel Pink -->
+        <item>#FFE0B2</item>   <!-- Pastel Orange -->
+        <item>#FFDAB9</item>   <!-- Pastel Chocolate/Peach -->
+    </string-array>
+</resources>

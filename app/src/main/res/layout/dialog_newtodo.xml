@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/purple_200"
+    android:padding="20dp"
+    tools:context=".ui.MainActivity">
+
+    <!-- Modern TextField -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_simpan_todo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type your task"
+            android:textColor="@color/black"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Spinner -->
+    <Spinner
+        android:id="@+id/spn_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/spinner_background"/>
+
+    <!-- Save Button -->
+    <Button
+        android:id="@+id/btn_simpantodo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/purple_500"
+        app:cornerRadius="12dp"
+        android:layout_marginTop="24dp"/>
+</LinearLayout>

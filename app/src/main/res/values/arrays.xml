@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="active_time_options">
+        <item>Daily</item>
+        <item>Specific Time</item>
+    </string-array>
+</resources>

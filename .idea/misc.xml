@@ -1,0 +1,33 @@
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Studying/Android_Project/Todo/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.188" />
+        <entry key="..\:/Studying/Android_Project/Todo/app/src/main/res/drawable/bg_parent.xml" value="0.2065" />
+        <entry key="..\:/Studying/Android_Project/Todo/app/src/main/res/drawable/dialog_edit.xml" value="0.183" />
+        <entry key="..\:/Studying/Android_Project/Todo/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.188" />
+        <entry key="..\:/Studying/Android_Project/Todo/app/src/main/res/drawable/ic_baseline_create_24.xml" value="0.183" />
+        <entry key="..\:/Studying/Android_Project/Todo/app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.1" />
+        <entry key="..\:/Studying/Android_Project/Todo/app/src/main/res/drawable/ic_baseline_notification_important_24.xml" value="0.188" />
+        <entry key="..\:/Studying/Android_Project/Todo/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2115" />
+        <entry key="..\:/Studying/Android_Project/Todo/app/src/main/res/layout/activity_dest.xml" value="0.25" />
+        <entry key="..\:/Studying/Android_Project/Todo/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Studying/Android_Project/Todo/app/src/main/res/layout/activity_post_detail.xml" value="0.22" />
+        <entry key="..\:/Studying/Android_Project/Todo/app/src/main/res/layout/carditemtodo_item.xml" value="0.5" />
+        <entry key="..\:/Studying/Android_Project/Todo/app/src/main/res/layout/cardtodo_item.xml" value="0.5" />
+        <entry key="..\:/Studying/Android_Project/Todo/app/src/main/res/layout/dialog_edit.xml" value="0.22" />
+        <entry key="..\:/Studying/Android_Project/Todo/app/src/main/res/layout/dialog_edititemtodo.xml" value="0.5406797116374872" />
+        <entry key="..\:/Studying/Android_Project/Todo/app/src/main/res/layout/dialog_edittodo.xml" value="0.2033514492753623" />
+        <entry key="..\:/Studying/Android_Project/Todo/app/src/main/res/layout/dialog_newitemtodo.xml" value="0.33" />
+        <entry key="..\:/Studying/Android_Project/Todo/app/src/main/res/layout/dialog_newtodo.xml" value="0.25" />
+        <entry key="..\:/Studying/Android_Project/Todo/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.188" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="ms-21" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
