@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">Noteku</string>
-    <string name="header_name">Noteku</string>
+    <string name="app_name">Talking Reminder</string>
+    <string name="header_name">    <string name="app_name">Talking Reminder</string>
+</string>
 </resources>

@@ -6,7 +6,9 @@ data class Item(
     val name: String,
     val active_time: String,
     val period_type: String,
+    val active_day: String?,
     val is_voice: Int,
+    val voice_volume: Int,
     val is_vibra: Int,
     val is_active: Int
 )

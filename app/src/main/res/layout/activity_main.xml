@@ -6,8 +6,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context="com.codeathome.todo.ui.MainActivity">
+    android:background="@color/purple_200"
+    tools:context="com.codeathome.todo.ui.MainActivity"
+    android:fitsSystemWindows="true"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -27,13 +29,15 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/comic_neue"
                     android:gravity="center"
                     android:text="@string/header_name"
                     android:textColor="@color/white"
-                    android:textSize="40sp"
+                    android:textSize="20sp"
+                    android:drawableRight="@drawable/main_icon_white_v2_mini"
+                    android:layout_gravity="center"
                     />
             </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.AppBarLayout>
@@ -78,10 +82,63 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_parent"
             android:layout_width="0dp"
-            android:layout_height="635dp"
+            android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+            app:layout_constraintBottom_toTopOf="@id/ll_upcoming"
+            android:layout_marginBottom="10dp"
+            />
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:id="@+id/ll_upcoming"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upcoming activity "
+                android:textColor="@color/ic_app_icon_background"
+                android:textSize="10sp"
+                android:layout_gravity="left"
+                />
+
+            <LinearLayout
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="left"
+                >
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="Bermain Bola Bermain Bola Bermain Bola"
+                    android:id="@+id/tv_nearest_activity"
+                    android:textSize="9sp"
+                    android:ellipsize="end"
+                    android:singleLine="false"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="11:20"
+                    android:padding="5dp"
+                    android:textSize="9sp"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_rounded_text_teal"
+                    android:id="@+id/tv_nearest_timer"
+                    />
+            </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -89,7 +146,7 @@
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginEnd="20dp"
             android:gravity="center">
 

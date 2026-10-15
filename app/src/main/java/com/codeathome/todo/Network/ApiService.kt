@@ -40,7 +40,9 @@ interface ApiService {
         @Field("active_time") active_time: String,
         @Field("todo_id") id: Int,
         @Field("period_type") period_type: String,
+        @Field("active_day") active_day : String?,
         @Field("is_voice") is_voice : Int,
+        @Field("voice_volume") voice_volume : Int,
         @Field("is_vibra") is_vibra : Int,
     ): Call<Item>
 
@@ -51,7 +53,9 @@ interface ApiService {
         @Field("active_time") active_time: String,
         @Field("name") name: String,
         @Field("period_type") period_type: String,
+        @Field("active_day") active_day : String?,
         @Field("is_voice") is_voice : Int,
+        @Field("voice_volume") voice_volume : Int,
         @Field("is_vibra") is_vibra : Int
     ): Call<Item>
 

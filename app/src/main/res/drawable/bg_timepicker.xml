@@ -8,7 +8,7 @@
     <!-- Border putih -->
     <stroke
         android:width="5dp"
-        android:color="@color/purple_500"/>
+        android:color="@color/purple_700"/>
 
     <!-- Sudut rounded -->
     <corners android:radius="16dp"/>

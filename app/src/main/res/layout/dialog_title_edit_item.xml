@@ -7,6 +7,6 @@
     android:text="Edit Item"
     android:textSize="18sp"
     android:textStyle="bold"
-    android:textColor="@color/ic_app_icon_background"
+    android:textColor="@color/purple_200"
     android:gravity="center"
-    android:background="@color/purple_700"/>
+    android:background="@drawable/bg_dialog_item_title_purple"/>

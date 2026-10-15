@@ -1,13 +1,24 @@
 package com.codeathome.todo.adapter
 
+import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.graphics.Color
+import android.media.AudioAttributes
+import android.media.AudioManager
+import android.os.Build
+import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.os.VibratorManager
+import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.codeathome.todo.MyLibrary.colors
 import com.codeathome.todo.R
@@ -19,6 +30,7 @@ import com.codeathome.todo.ui.MainActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.Locale
 
 class AdapterCard(val activity: Activity, var data: List<Data>) :
     RecyclerView.Adapter<AdapterCard.Holder>() {
@@ -45,6 +57,7 @@ class AdapterCard(val activity: Activity, var data: List<Data>) :
         return Holder(view)
     }
 
+    @SuppressLint("ServiceCast")
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val strs =  data[position].created_at.split("T").toTypedArray()
         val time =  strs[1].split(".").toTypedArray()
@@ -64,8 +77,8 @@ class AdapterCard(val activity: Activity, var data: List<Data>) :
                 LayoutInflater.from(activity).inflate(R.layout.dialog_newitemtodo, null)
 
             val edtDialog = mDialog.findViewById<EditText>(R.id.edt_dialog_newitem_todo)
-            val btnSimpan = mDialog.findViewById<Button>(R.id.btn_simpan_dialog_newitem_todo)
-            val btnBatal = mDialog.findViewById<Button>(R.id.btn_batal_dialog_newitem_todo)
+            val btnSave = mDialog.findViewById<Button>(R.id.btn_simpan_dialog_newitem_todo)
+            val btnCancel = mDialog.findViewById<Button>(R.id.btn_batal_dialog_newitem_todo)
             val btnDatePicker = mDialog.findViewById<DatePicker>(R.id.datePicker)
             val btnTimePicker = mDialog.findViewById<TimePicker>(R.id.timePicker)
             val spinnerOption: Spinner = mDialog.findViewById(R.id.spinner_option)
@@ -73,7 +86,9 @@ class AdapterCard(val activity: Activity, var data: List<Data>) :
             val gridDaysOfWeek: GridLayout = mDialog.findViewById(R.id.grid_days_of_week)
             val chkEnableVoice: CheckBox = mDialog.findViewById(R.id.chkEnableVoice)
             val chkEnableVibra: CheckBox = mDialog.findViewById(R.id.chkEnableVibra)
-
+            val seekBar: SeekBar =  mDialog.findViewById(R.id.seekBarVolume)
+            var tts: TextToSpeech? = null
+            val audioManager = mDialog.context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
 
             radioGroupRepeat.setOnCheckedChangeListener { group, checkedId ->
                 when (checkedId) {
@@ -121,21 +136,89 @@ class AdapterCard(val activity: Activity, var data: List<Data>) :
                 override fun onNothingSelected(parent: AdapterView<*>) {}
             }
 
-            var namenew: String = "";
-            val titleView = LayoutInflater.from(activity).inflate(R.layout.dialog_title_add_item, null)
+            chkEnableVoice.setOnCheckedChangeListener { buttonView, isChecked ->
+                if (isChecked) {
+                    seekBar.visibility = View.VISIBLE
+                } else {
+                    seekBar.visibility = View.GONE
+                }
+            }
 
-            val mBuild = AlertDialog.Builder(activity)
+            chkEnableVibra.setOnCheckedChangeListener { _, isChecked ->
+                val vibrator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    val vibratorManager =
+                        mDialog.context.getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+                    vibratorManager.defaultVibrator
+                } else {
+                    @Suppress("DEPRECATION")
+                    mDialog.context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+                }
+
+                if (isChecked) {
+                    println("vibra checked")
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        vibrator.vibrate(
+                            VibrationEffect.createWaveform(
+                                longArrayOf(
+                                    0L,
+                                    2000L
+                                ),
+                                -1
+                            )
+                        )
+                    }
+                }else{
+                    vibrator.cancel()
+                }
+            }
+
+            tts = TextToSpeech(activity) { status ->
+                if (status == TextToSpeech.SUCCESS) {
+                    tts?.language = Locale("id", "ID")
+                }
+            }
+
+            val audioAttrs = AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_ALARM)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
+                .build()
+
+            tts?.setAudioAttributes(audioAttrs)
+
+            val maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_ALARM)
+            seekBar.max = maxVolume
+
+            seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                    if (fromUser) {
+                        audioManager.setStreamVolume(AudioManager.STREAM_ALARM, progress, 0)
+
+                        val params = Bundle()
+                        params.putFloat(TextToSpeech.Engine.KEY_PARAM_VOLUME, 1.0f) // paksa full ratio
+                        tts?.speak(edtDialog.text, TextToSpeech.QUEUE_FLUSH, params, "alarmID")
+                    }
+                }
+
+                override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+                override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+            })
+
+            val titleView = LayoutInflater.from(activity).inflate(R.layout.dialog_title_add_item, null)
+            val mAlertDialog = AlertDialog.Builder(activity)
                 .setCustomTitle(titleView)
                 .setView(mDialog)
                 .create()
 
-            mBuild.show()
+            mAlertDialog.show()
 
-            btnBatal.setOnClickListener {
-                mBuild.dismiss()
+            mAlertDialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+            btnCancel.setOnClickListener {
+                mAlertDialog.dismiss()
             }
 
-            btnSimpan.setOnClickListener {
+            btnSave.setOnClickListener {
+                val namenew = edtDialog.text.toString()
                 var month = btnDatePicker.month + 1
                 val spinnerOptionPeriodType = spinnerOption.selectedItem.toString()
                 val edtPeriod_Type = when(spinnerOptionPeriodType){
@@ -149,7 +232,7 @@ class AdapterCard(val activity: Activity, var data: List<Data>) :
                     else      -> ""
                 }
 
-                namenew = edtDialog.text.toString()
+                val edtVoiceVolume  = seekBar.progress
 
                 val edtEnableVoice = when(chkEnableVoice.isChecked){
                     true -> 1
@@ -161,7 +244,34 @@ class AdapterCard(val activity: Activity, var data: List<Data>) :
                     false -> 0
                 }
 
-                ApiConfig.instanceRetrofit.postTodoItem(namenew,datetimenew,id,edtPeriod_Type, edtEnableVoice, edtEnableVibra).enqueue(object : Callback<Item>{
+                var edtActiveDayText: String? = null
+                if(spinnerOption.selectedItemPosition == 0){
+                    when (radioGroupRepeat.checkedRadioButtonId) {
+                        R.id.radioDaily -> {
+                            edtActiveDayText = "-"
+                        }
+                        R.id.radioSpecificDay -> {
+                            val gridDays = mDialog.findViewById<GridLayout>(R.id.grid_days_of_week)
+                            val selectedDays = mutableListOf<String>()
+                            for (i in 0 until gridDays.childCount) {
+                                val checkBox = gridDays.getChildAt(i) as? CheckBox
+                                if (checkBox?.isChecked == true) {
+                                    selectedDays.add(checkBox.text.toString())
+                                }
+                            }
+
+                            edtActiveDayText = if (selectedDays.isNotEmpty()) {
+                                selectedDays.joinToString(",")
+                            } else {
+                                "(NULL)"
+                            }
+                        }
+                    }
+                }else{
+                    edtActiveDayText = "-"
+                }
+
+                ApiConfig.instanceRetrofit.postTodoItem(namenew,datetimenew,id,edtPeriod_Type, edtActiveDayText, edtEnableVoice, edtVoiceVolume, edtEnableVibra).enqueue(object : Callback<Item>{
                     override fun onResponse(call: Call<Item>, response: Response<Item>) {
                         Log.d("Respone",response.toString());
                         if (response.isSuccessful){
@@ -180,7 +290,7 @@ class AdapterCard(val activity: Activity, var data: List<Data>) :
 
                 })
 
-                mBuild.dismiss()
+                mAlertDialog.dismiss()
             }
 
         }
@@ -201,6 +311,8 @@ class AdapterCard(val activity: Activity, var data: List<Data>) :
                 .create()
 
             mBuild.show()
+
+            mBuild.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
             // Create an ArrayAdapter using the string array and a default spinner layout
             ArrayAdapter.createFromResource(

@@ -9,4 +9,10 @@
     <color name="white">#FAFAFA</color>        <!-- Warm pastel white -->
     <color name="gray_light">#E0E0E0</color>
     <color name="gray_super_light">#CACACA</color>
+    <color name="pastel_red">#FFB3B3</color>
+    <color name="pastel_green">#C8E6C9</color>
+    <color name="pastel_blue">#9FA8DA</color>
+    <color name="pastel_pink">#FFD1DC</color>
+    <color name="pastel_orange">#FFE0B2</color>
+    <color name="pastel_chocolate">#FFDAB9</color>
 </resources>

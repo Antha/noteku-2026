@@ -3,14 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_additem"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp"
         android:background="@color/teal_200"
         tools:context=".ui.MainActivity">
 
@@ -19,10 +19,11 @@
             android:id="@+id/edt_dialog_newitem_todo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Item Name"
-            android:textColor="@color/purple_700"
+            android:hint="Example : Wash Clothes"
+            android:textColor="@color/black"
             android:textColorHint="@color/black"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="12dp"
+            android:textSize="13sp"/>
 
         <Spinner
             android:layout_width="match_parent"
@@ -96,7 +97,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Specific Day"
-                android:visibility="invisible"
                 />
         </RadioGroup>
 
@@ -137,6 +137,15 @@
                 android:text="Vibration"/>
         </LinearLayout>
 
+        <SeekBar
+            android:id="@+id/seekBarVolume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:padding="10dp"
+            android:visibility="gone"
+            />
+
         <!-- Action buttons -->
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -150,9 +159,9 @@
                 android:id="@+id/btn_batal_dialog_newitem_todo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Batal"
                 android:layout_margin="5dp"
                 android:background="@color/purple_200"
+                android:text="Cancel"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp"
                 />
@@ -161,7 +170,7 @@
                 android:id="@+id/btn_simpan_dialog_newitem_todo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Simpan"
+                android:text="Save"
                 android:layout_margin="5dp"
                 android:background="@color/purple_700"
                 android:textColor="#FFFFFF"

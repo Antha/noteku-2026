@@ -15,7 +15,7 @@ class PopupActivity : Activity() {
         val title = intent.getStringExtra("titleExtra")
         val message = intent.getStringExtra("messageExtra")
 
-        val view = layoutInflater.inflate(R.layout.custom_dialog, null)
+        val view = layoutInflater.inflate(R.layout.dialog_alarm, null)
         view.findViewById<TextView>(R.id.dialogTitle).text = title
         view.findViewById<TextView>(R.id.dialogMessage).text = message
 

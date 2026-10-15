@@ -12,8 +12,8 @@ android {
         minSdk 26
         //noinspection EditedTargetSdkVersion
         targetSdk 36
-        versionCode 11
-        versionName "1.9"
+        versionCode 14
+        versionName "2.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -49,5 +49,6 @@ dependencies {
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipeRefreshVersion"
     implementation "com.google.android.material:material:1.0.0"
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
 }
 

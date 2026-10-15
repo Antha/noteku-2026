@@ -34,6 +34,25 @@
         android:layout_height="match_parent"
     />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#FFFFFF"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:id="@+id/dialogInfo"
+        android:textSize="13sp"
+        android:textColor="#FFFFFF"
+        android:text="This alarm is scheduled for September 8, 2025, at 21:00."
+        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:textAlignment="textEnd"
+        />
+
     <Button
         android:id="@+id/btnDialog"
         android:text="Close"
